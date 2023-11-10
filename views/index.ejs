@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corluss</title>
+    <link rel="shortcut icon" href="/img/icono.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/style.css">   
+    <meta name="theme-color" content="#2091F9">
+</head>
+
+<body>
+
+    <header class="hero">
+        
+        <%- include("partials/nav") %>
+    
+        <section class="hero__container container">
+            <h1 class="hero__title">Una plataforma web y móvil integral</h1>
+            <p class="hero__paragraph">para promover la salud y el apoyo educativo, 
+                con funcionalidades interactivas y de seguimiento para mejorar el aprendizaje y el bienestar de los estudiantes.</p>
+            <a href="/registro" class="cta">Comienza ahora</a>
+
+            
+        </section>
+    </header>
+    
+
+    <main>
+        <section class="container about">
+            <h2 class="subtitle">¿Qué aprenderás en esta aplicación?</h2>
+            <p class="about__paragraph">Todo lo necesario para cumplir las metas y objetivos de tu plan de estuidios</p>
+
+            <div class="about__main">
+                <article class="about__icons">
+                    <img src="/img/shapes.svg" class="about__icon">
+                    <h3 class="about__title">Salud</h3>
+                    <p class="about__paragrah">La aplicación promueve la salud y el bienestar de los estudiantes</p>
+                </article>
+
+                <article class="about__icons">
+                    <img src="/img/paint.svg" class="about__icon">
+                    <h3 class="about__title">Educación</h3>
+                    <p class="about__paragrah">La aplicación proporciona apoyo educativo a los estudiantes</p>
+                </article>
+
+                <article class="about__icons">
+                    <img src="/img/code.svg" class="about__icon">
+                    <h3 class="about__title">Comunicación</h3>
+                    <p class="about__paragrah">La plicación facilita la comunicación entre los estudiantes, los profesores y los padres.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="knowledge">
+            <div class="knowledge__container container">
+                <div class="knowledege__texts">
+                    <h2 class="subtitle">¿Quieres poner en práctica tus conocimientos?</h2>
+                    <p class="knowledge__paragraph">No necesitas iniciar sesión, nuestra aplicación esta enfocada a aprender de manera didáctica sin importar la edad del estudiante, 
+                        siempre se puede aprender algo nuevo ¿Qué estas esperando?</p>
+                    <a href="#" class="cta">Entra como invitado</a>
+                </div>
+
+                <figure class="knowledge__picture">
+                    <img src="/img/macbook.png" class="knowledge__img">
+                </figure>
+            </div>
+        </section>
+
+        <section class="price container">
+            <h2 class="subtitle">Las funciones de nuestra app</h2>
+            <p class="questions__paragraph">Sólo inicia sesión y disfruta de nuestros servicios</p>
+
+            <div class="price__table">  
+                <div class="price__element">
+                    <h3 class="price__price">Lecciones teóricas</h3>
+                    <div class="price__items">
+                        <img src="/img/leccion.jpg" alt="Lecciones teóricas">
+                        <p class="price__features">Explora nuestro catálogo de lecciones teóricas para adquirir conocimientos 
+                            sólidos sobre hábitos saludables.</p>
+                    </div>
+
+                    <a href="/registro" class="price__cta">Empieza ahora</a>
+                </div>
+
+
+                <div class="price__element price__element--best">
+                    <h3 class="price__price">Minijuegos</h3>
+
+                    <div class="price__items">
+                        <img src="/img/minijuego.jpg" alt="Minijuegos">
+                        <p class="price__features">Diviértete mientras aprendes con nuestros minijuegos interactivos que refuerzan 
+                            conceptos de salud.</p>
+                    </div>
+
+                    <a href="/registro" class="price__cta">Empieza ahora</a>
+                </div>
+
+                <div class="price__element">
+                    <h3 class="price__price">Rankings</h3>
+
+                    <div class="price__items">
+                        <img src="/img/ranking.jpg" alt="Rankings">
+                        <p class="price__features">Compite de manera amigable y observa cómo te destacas en comparación con otros usuarios en nuestros rankings</p>
+                    </div>
+
+                    <a href="/registro" class="price__cta">Empieza ahora</a>
+                </div>
+            </div>
+        </section>
+
+    
+
+        <section class="questions container">
+            <h2 class="subtitle">Preguntas frecuentes</h2>
+            <p class="questions__paragraph">Encuentra Respuestas Rápidas</p>
+
+            <section class="questions__container">
+                <article class="questions__padding">
+                    <div class="questions__answer">
+                        <h3 class="questions__title">¿Qué es Corluss?
+                            <span class="questions__arrow">
+                                <img src="/img/arrow.svg" class="questions__img">
+                            </span>
+                        </h3>
+                        <p class="questions__show">Corluss es una aplicación educativa diseñada para ayudar a los niños y jóvenes a aprender y adoptar hábitos saludables de una manera divertida e interactiva. Proporciona una amplia variedad de contenido, incluyendo lecciones teóricas, minijuegos, retroalimentación y recompensas, así como una función de seguimiento de progreso que permite a los padres y tutores supervisar el desempeño de los alumnos. </p>
+                    </div>
+                </article>
+
+                <article class="questions__padding">
+                    <div class="questions__answer">
+                        <h3 class="questions__title">¿Qué aprenderé en esta aplicación?
+                            <span class="questions__arrow">
+                                <img src="/img/arrow.svg" class="questions__img">
+                            </span>
+                        </h3>
+                        <p class="questions__show">En esta aplicación, aprenderás una variedad de hábitos saludables y conceptos relacionados con el bienestar. Algunos de los temas que podrás explorar incluyen nutrición, actividad física, higiene, cuidado personal y más. A través de lecciones teóricas informativas, minijuegos interactivos y retroalimentación constante, adquirirás conocimientos y habilidades que te ayudarán a llevar un estilo de vida más saludable y equilibrado. ¡Prepárate para aprender de una manera divertida y educativa!</p>
+                    </div>
+                </article>
+
+                <article class="questions__padding">
+                    <div class="questions__answer">
+                        <h3 class="questions__title">¿Para quién está enfocado Corluss?
+                            <span class="questions__arrow">
+                                <img src="/img/arrow.svg" class="questions__img">
+                            </span>
+                        </h3>
+
+                        <p class="questions__show">Corluss está enfocado principalmente en niños y jóvenes, así como en sus padres o tutores. Nuestra aplicación brinda contenido educativo y entretenido relacionado con hábitos saludables, diseñado para promover un estilo de vida más saludable y equilibrado en una audiencia joven. Los padres y tutores también pueden utilizar Corluss para supervisar el progreso y el rendimiento de sus hijos en la aplicación.</p>
+                    </div>
+                </article>
+            </section>
+
+            <section class="questions__offer">
+                <h2 class="subtitle">¿Estas listo para aprender?</h2>
+                <p class="questions__copy">Descubre un mundo lleno de diversión y conocimiento que te ayudará a llevar un estilo de vida 
+                    más saludable mientras disfrutas cada paso del camino. ¡Únete a nosotros y comienza tu viaje de descubrimiento hoy!</p>
+                <a href="#" class="cta">Aprende ahora</a>
+            </section>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <%- include("partials/footer") %>
+    </footer>
+
+    <script src="/js/slider.js"></script>
+    <script src="/js/questions.js"></script>
+    <script src="/js/menu.js"></script>
+</body>
+
+</html>
