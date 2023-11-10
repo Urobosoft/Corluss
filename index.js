@@ -8,7 +8,8 @@ const app = express()
 app.set('view engine', 'ejs')
 
 //seteamos la carpeta public para archivos estáticos
-app.use(express.static('public'))
+app.use('/Corluss', express.static('public'));
+
 
 //para procesar datos enviados desde forms
 app.use(express.urlencoded({extended:true}))
