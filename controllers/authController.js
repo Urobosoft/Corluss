@@ -8,7 +8,7 @@
     // Configuración de Multer para la carga de imágenes
     const storage = multer.diskStorage({
         destination: function (req, file, cb) {
-            cb(null, 'public/uploads'); // Directorio donde se almacenarán las fotos
+            cb(null, '/Corluss/public/uploads'); // Directorio donde se almacenarán las fotos
         },
         filename: function (req, file, cb) {
             cb(null, Date.now() + '-' + file.originalname); // Nombre del archivo en el servidor
