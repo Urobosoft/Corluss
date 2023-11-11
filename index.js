@@ -31,6 +31,6 @@ app.use(function(req, res, next) {
 });
 
 
-app.listen(6665, ()=>{
-    console.log('SERVER UP runnung in http://localhost:6665')
+app.listen(2526, ()=>{
+    console.log('SERVER UP runnung in http://localhost:2526')
 })
