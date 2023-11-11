@@ -1,9 +1,9 @@
 CREATE SCHEMA IF NOT EXISTS `corluss` DEFAULT CHARACTER SET utf8 ;
 USE `corluss`;
 
-DROP TABLE IF EXISTS `corluss`.`Usuario` ;
+DROP TABLE IF EXISTS `corluss`.`usuario` ;
 
-CREATE TABLE IF NOT EXISTS `corluss`.`Usuario` (
+CREATE TABLE IF NOT EXISTS `corluss`.`usuario` (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255),
     apellido VARCHAR(255),
@@ -15,5 +15,5 @@ CREATE TABLE IF NOT EXISTS `corluss`.`Usuario` (
     foto VARCHAR(255)
 );
 
-SELECT * FROM `corluss`.`Usuario`;
+SELECT * FROM `corluss`.`usuario`;
 
