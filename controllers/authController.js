@@ -63,7 +63,7 @@
             console.log(password)   
 
             if(!nomUsuario || !password ){
-                res.render('login',{
+                res.render('/Corluss/login',{
                     alert:true,
                     alertTitle: "Advertencia",
                     alertMessage: "Ingrese un usuario y password",
