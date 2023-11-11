@@ -1,4 +1,3 @@
-const path = require('path');
 const express = require('express')
 const dotenv = require('dotenv')
 const cookieParser = require('cookie-parser')
@@ -9,7 +8,7 @@ const app = express()
 app.set('view engine', 'ejs')
 
 //seteamos la carpeta public para archivos estáticos
-app.use('/Corluss', express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'))
 
 //para procesar datos enviados desde forms
 app.use(express.urlencoded({extended:true}))
