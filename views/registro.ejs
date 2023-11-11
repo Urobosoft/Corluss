@@ -19,11 +19,11 @@
                 <h2 class="title">Inicio de sesión</h2>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input type="text" name="nomUsuario" placeholder="Nombre de usuario" />
+                    <input type="text" name="nomUsuario" placeholder="Nombre de usuario" required/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" name="password" placeholder="Contraseña" />
+                    <input type="password" name="password" placeholder="Contraseña" required/>
                 </div>
             
                 <button class="w-100 btn btn-lg btn-primary" class="btn solid" type="submit">Iniciar sesión</button>
@@ -181,19 +181,7 @@
     </div>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <% if(alert) { %>
-    <script>
-      Swal.fire({
-        title: '<%= alertTitle %>',
-        text:'<%= alertMessage %>',
-        icon:'<%= alertIcon %>',
-        showConfirmButton: <%= showConfirmButton %>,
-        timer: <%= timer %>
-      }).then(()=>{
-        window.location = '/<%= ruta %>'
-      })
-    </script>
-  <% } %>
+ 
 
     <script src="/Corluss/js/registro.js"></script>
     <script src="/Corluss/js/popup.js"></script>
