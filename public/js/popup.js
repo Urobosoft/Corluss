@@ -25,3 +25,26 @@ document.getElementById('foto').addEventListener('change', function() {
     
     reader.readAsDataURL(file);
 });
+
+
+      document.addEventListener('DOMContentLoaded', () => {
+  const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+  const forgotPasswordPopup = document.getElementById('forgotPasswordPopup');
+  const closePopup = document.querySelector('.close-popup');
+
+  forgotPasswordLink.addEventListener('click', function(e) {
+    e.preventDefault(); // Evita que el enlace navegue a un URL
+    forgotPasswordPopup.style.display = 'flex'; // Muestra el popup
+  });
+
+  closePopup.addEventListener('click', function() {
+    forgotPasswordPopup.style.display = 'none'; // Oculta el popup
+  });
+
+  // Opcional: Cierra el popup al hacer clic fuera de él
+  window.addEventListener('click', function(e) {
+    if (e.target === forgotPasswordPopup) {
+      forgotPasswordPopup.style.display = 'none';
+    }
+  });
+});

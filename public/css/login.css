@@ -11,6 +11,97 @@ input {
   font-family: "Poppins", sans-serif;
 }
 
+.error-message {
+  color: #ff0000; /* Rojo para los errores es común */
+  background-color: #ffecec; /* Un fondo rojo claro para que destaque */
+  border: 1px solid #ff0000;
+  padding: 15px;
+  margin-top: 6px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 0.7em;
+  display: block; /* o inline-block según necesidad */
+  width: 100%; /* Ajusta al ancho del contenedor padre */
+  height: 45px;
+  box-sizing: border-box;
+}
+
+.error {
+  color: #ff0000; /* Rojo para los errores es común */
+  background-color: #ffecec; /* Un fondo rojo claro para que destaque */
+  border: 1px solid #ff0000;
+  padding: 15px;
+  margin-top: 6px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 0.7em;
+  display: block; /* o inline-block según necesidad */
+  box-sizing: border-box;
+  display: none; 
+}
+
+  .rep {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: all 0.3s; /* Suaviza la transición del popup */
+}
+
+.rep-content {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 10px; /* Bordes más redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+  text-align: center;
+  width: 80%; /* Ancho ajustado para dispositivos móviles */
+  max-width: 450px; /* Un poco más amplio para pantallas grandes */
+  transition: transform 0.20s; /* Transición suave al abrir */
+}
+
+.close-popup {
+	font-size: 30px;
+	line-height: 16px;
+	display: block;
+	text-align: right;
+	transition: .3s ease all;
+	color: #BBBBBB;
+}
+
+.close-popup:hover {
+  color: #333; /* Oscurece el icono al pasar el mouse */
+}
+
+#forgotPasswordPopup input[type=email],
+#forgotPasswordPopup input[type=submit] {
+  width: 90%; /* Ajusta el ancho de los inputs dentro del popup */
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px; /* Bordes redondeados para los campos de entrada */
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+}
+
+#forgotPasswordPopup input[type=submit] {
+  background-color: #5995fd; /* Color más atractivo para el botón dentro del popup */
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Transición de fondo para el botón */
+}
+
+#forgotPasswordPopup input[type=submit]:hover {
+  background-color:  #5995fd /* Oscurece el botón al pasar el mouse */
+}
+
+
+
+
 .container {
   position: relative;
   width: 100%;
@@ -121,6 +212,8 @@ form label[for="foto"] {
 }
 
 
+
+
 .form-column select {
   line-height: 1;
   font-weight: 600;
@@ -185,6 +278,23 @@ form label[for="foto"] {
   grid-template-columns: 15% 85%;
   padding: 0 0.4rem;
   position: relative;
+  
+}
+
+.input-field i.fa-eye {
+  position: absolute;
+  cursor: pointer; 
+  right: 15px;
+
+
+  
+}
+
+.input-field i.fa-eye-slash {
+  position: absolute;
+  cursor: pointer;
+  right: 15px; 
+
 }
 
 
@@ -208,7 +318,7 @@ form label[for="foto"] {
 }
 
 .text{
-    background: none;
+  background: none;
   outline: none;
   border: none;
   line-height: 1;
@@ -226,6 +336,17 @@ form label[for="foto"] {
   padding: 0.7rem 0;
   font-size: 1rem;
 }
+
+
+.forgot-password {
+  text-align: left; /* Alinea el texto a la izquierda */
+  color: gray; /* Cambia el color a gris */
+  display: block; /* Hace que tome su propia línea */
+  margin-top: 5px; /* Ajusta el espaciado al gusto */
+  margin-left: -155px;
+  text-decoration: none;
+}
+
 
 .social-media {
   display: flex;
