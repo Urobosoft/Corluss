@@ -24,8 +24,47 @@ router.get('/inicio', authController.isAuthenticated, (req, res) => {
     }
 });
 
-router.get('/inicio', (req, res) => {
-    res.render('inicio');
+
+// Ruta para la interfaz de usuario
+
+router.get('/principal', (req, res) => {
+    res.render('home/principal', { user: req.user });
+});
+
+
+router.get('/perfil', (req, res) => {
+    res.render('home/perfil', { user: req.user });
+});
+
+router.get('/lista', (req, res) => {
+    res.render('home/lista', { user: req.user });
+});
+
+router.get('/estadisticas', (req, res) => {
+    res.render('home/estadisticas', { user: req.user });
+});
+
+router.get('/reportar', (req, res) => {
+    res.render('home/reportar', { user: req.user });
+});
+
+router.get('/configuracion', (req, res) => {
+    res.render('home/configuracion', { user: req.user });
+});
+
+router.get('/crear', (req, res) => {
+    res.render('home/crear', { user: req.user });
+});
+
+
+// Ruta para la interfaz de administradores
+
+router.get('/principalA', (req, res) => {
+    res.render('administrador/inicio', { user: req.user });
+});
+
+router.get('/regristrar', (req, res) => {
+    res.render('administrador/registrar', { user: req.user });
 });
 
 
@@ -84,18 +123,18 @@ router.post('/login', authController.login);
 router.get('/logout', authController.logout);
 
 // Administradores por defecto
-// // const adminData = {
-// //     nombre: 'Kevin Saúl',
-// //     apellido: 'Olarte Tomás',
-// //     nomUsuario: 'Well',
-// //     Correo_Electronico: 'olarte.tomas.kevinsaul@gamil.com',
-// //     Password: 'A', 
-// //     Rol: 'Administrador',
-// //     foto: 'uploads/administrador.jpg'
-// //   };
+// const adminData = {
+//     nombre: 'Kevin Saúl',
+//     apellido: 'Olarte Tomás',
+//     nomUsuario: 'Well',
+//     Correo_Electronico: 'olarte.tomas.kevinsaul@gamil.com',
+//     Password: 'A', 
+//     Rol: 'Administrador',
+//     foto: 'uploads/administrador.jpg'
+//   };
   
-// // insertAdmin(adminData).catch(error => {
-// //     console.error('No se pudo insertar el administrador de prueba:', error);
-// //   });
+// insertAdmin(adminData).catch(error => {
+//     console.error('No se pudo insertar el administrador de prueba:', error);
+//   });
 
 module.exports = router;

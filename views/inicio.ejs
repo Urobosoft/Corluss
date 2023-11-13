@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="/css/dasboard.css">
     <title>Home</title>
     <link rel="shortcut icon" href="/img/icono.png" type="image/x-icon">
@@ -15,17 +16,17 @@
     <div class="container">
         <!-- Sidebar Section -->
         <%- include("home/sidebar") %>
-        <!-- End of Sidebar Section -->
+        <!-- End of Sidebar Section --> 
 
         <!-- Main Content -->
         <main>
             <h1>¿Qué haremos hoy?</h1>
 
-            <i class='bx bx-menu' ></i>
 			<form action="#">
 				<div class="form-input">
 					<input type="search" placeholder="Buscar..." required>
-					<button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+					<button type="submit" class="search-btn"><span class="material-icons-sharp">search</span>
+                    </button>
 				</div>
 			</form>
             <!-- Analyses -->
@@ -205,7 +206,6 @@
                 </div>
 
             </div>
-
         </div>
 
 
