@@ -1,5 +1,4 @@
 const conexion = require('../database/db');
-const { decrypt } = require('./authController');
 
 exports.publicar = async (req, res) => {
   const { contenido } = req.body;

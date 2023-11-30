@@ -21,24 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //Registrar y mostrar  
-
-const crypto = require('crypto');
-function encrypt(data) {
-    const algorithm = 'aes-256-cbc';
-
-    // Convertir la clave hexadecimal a un Buffer de 32 bytes
-    const key = Buffer.from(process.env.ENCRYPTION_KEY, 'hex');
-
-    const iv = crypto.randomBytes(16); // Initialization vector
-
-    let cipher = crypto.createCipheriv(algorithm, key, iv);
-    let encrypted = cipher.update(data);
-    encrypted = Buffer.concat([encrypted, cipher.final()]);
-
-    return iv.toString('hex') + ':' + encrypted.toString('hex');
-}
-
-
+ 
 document.getElementById("formPublicacion").addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -105,11 +88,9 @@ function mostrarPublicaciones(publicaciones) {
         const divPublicacion = document.createElement('div');
         divPublicacion.classList.add('publicacion');
 
-        const rutaFotoDesencriptada = publicacion.foto ? decrypt(publicacion.foto) : null;
-
         const htmlPublicacion = `
 <div class="profile-container">
-    <img src="/Corluss${rutaFotoDesencriptada}" alt="Foto de perfil" class="profile-picture">
+    <img src="/Corluss${publicacion.foto}" alt="Foto de perfil" class="profile-picture">
     <span>${publicacion.nombre}</span>
     <span class="date">${new Date(publicacion.fecha_publicacion).toLocaleDateString()}</span>
 </div>
