@@ -1,6 +1,6 @@
 document.getElementById("toggle-register").addEventListener("click", async () => {
     // Hacer una solicitud al servidor para verificar los alumnos registrados
-    const response = await fetch("/api/user/verificarAlumnos");
+    const response = await fetch("/Corluss/api/user/verificarAlumnos");
     const data = await response.json();
 
     if (data.tieneAlumnos) {
