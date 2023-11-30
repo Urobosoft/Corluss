@@ -98,7 +98,6 @@ CREATE TABLE IF NOT EXISTS `ListaAlumnos` (
   FOREIGN KEY (`alumno_id`) REFERENCES `usuario`(`ID_usuario`)
 ) ENGINE = InnoDB;
 
-
 CREATE TABLE IF NOT EXISTS `ListaTutores` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `usuario_registrador_id` INT NOT NULL,
