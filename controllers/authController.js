@@ -656,14 +656,14 @@ exports.login = async (req, res) => {
         };
 
         if (!nomUsuario || !password) {
-            res.render('./login', {
+            res.render('/Corluss/login', {
                 alert: true,
                 alertTitle: "Advertencia",
                 alertMessage: "Ingrese un usuario y password",
                 alertIcon: 'info',
                 showConfirmButton: true,
                 timer: false,
-                ruta: './login',
+                ruta: '/Corluss/login',
                 valoresAnteriores,
                 errorC: null,
                 errorU: null,
