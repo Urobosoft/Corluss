@@ -305,22 +305,22 @@ router.get('/obtener-publicaciones', publicacionesController.obtenerPublicacione
 
 
 // Administradores por defecto
-// const adminData = {
-//     nombre: 'Kevin Saúl',
-//     apellido: 'Olarte Tomás',
-//     nomUsuario: 'Kv',
-//     Correo_Electronico: 'olarte.tomas.kevinsaul@gmail.com',
-//     genero: 'M', 
-//     fecha_nacimiento: '2000-01-01',// Asegúrate de que el correo electrónico esté bien escrito
-//     Password: 'Hola_1938', 
-//     Rol: 'Administrador',
-//     foto: 'uploads/administrador.jpg'
-// };
+const adminData = {
+    nombre: 'Kevin Saúl',
+    apellido: 'Olarte Tomás',
+    nomUsuario: 'Kv',
+    Correo_Electronico: 'olarte.tomas.kevinsaul@gmail.com',
+    genero: 'M', 
+    fecha_nacimiento: '2000-01-01',// Asegúrate de que el correo electrónico esté bien escrito
+    Password: 'Hola_1938', 
+    Rol: 'Administrador',
+    foto: 'uploads/administrador.jpg'
+};
 
-// insertarAdministrador.insertAdmin(adminData)
-//     .catch(error => {
-//         console.error('No se pudo insertar el administrador:', error);
-//     });
+insertarAdministrador.insertAdmin(adminData)
+    .catch(error => {
+        console.error('No se pudo insertar el administrador:', error);
+    });
 
 
 module.exports = router;    
