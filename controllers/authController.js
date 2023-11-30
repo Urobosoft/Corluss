@@ -104,14 +104,14 @@ exports.register = async (req, res) => {
 
         // Verifica todos los campos excepto la foto
         if (!nombre || !apellido || !nomUsuario || !contacto || !password || !genero || !dia || !mes || !ano) {
-            return res.render('/registro', {
+            return res.render('/Corluss/registro', {
                 alert: true,
                 alertTitle: "Advertencia",
                 alertMessage: "Todos los campos son obligatorios",
                 alertIcon: 'info',
                 showConfirmButton: true,
                 timer: false,
-                ruta: '/registro',
+                ruta: '/Corluss/registro',
                 valoresAnteriores: req.body, // Pasa los valores introducidos previamente
                 errorC: null,
                 errorU: null,
