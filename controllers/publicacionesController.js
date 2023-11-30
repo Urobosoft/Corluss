@@ -1,4 +1,5 @@
 const conexion = require('../database/db');
+const { decrypt } = require('./authController');
 
 exports.publicar = async (req, res) => {
   const { contenido } = req.body;
@@ -32,8 +33,17 @@ exports.obtenerPublicaciones = (req, res) => {
           return res.status(500).send('Error al obtener las publicaciones');
       }
 
-      res.json(resultados);
-  });
+      const publicacionesDesencriptadas = resultados.map((publicacion) => {
+        // Verifica si la columna 'foto' está presente en la publicación
+        if (publicacion.foto) {
+          // Desencripta la columna 'foto' (suponiendo que 'foto' contiene la foto de perfil del usuario)
+          publicacion.foto = decrypt(publicacion.foto);
+        }
+        return publicacion;
+      });
+  
+      res.json(publicacionesDesencriptadas);
+    });
 };
 
 
