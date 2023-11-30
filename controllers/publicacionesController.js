@@ -33,17 +33,8 @@ exports.obtenerPublicaciones = (req, res) => {
           return res.status(500).send('Error al obtener las publicaciones');
       }
 
-      const publicacionesDesencriptadas = resultados.map((publicacion) => {
-        // Verifica si la columna 'foto' está presente en la publicación
-        if (publicacion.foto) {
-          // Desencripta la columna 'foto' (suponiendo que 'foto' contiene la foto de perfil del usuario)
-          publicacion.foto = decrypt(publicacion.foto);
-        }
-        return publicacion;
-      });
-  
-      res.json(publicacionesDesencriptadas);
-    });
+      res.json(resultados);
+  });
 };
 
 
