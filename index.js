@@ -45,7 +45,7 @@ app.use(function(req, res, next) {
     next();
 });
 
-server.listen(5555, () => {
-  console.log('SERVER UP running in http://localhost:5555');
+server.listen(7523, () => {
+  console.log('SERVER UP running in http://localhost:7523');
   module.exports = io;
 });
