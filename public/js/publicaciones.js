@@ -74,7 +74,7 @@ function limpiarFormulario() {
 
 //Mostrar publicaciones
 document.addEventListener("DOMContentLoaded", function () {
-    fetch('/Corluss/obtener-publicaciones')
+    fetch('/obtener-publicaciones')
         .then(response => response.json())
         .then(publicaciones => mostrarPublicaciones(publicaciones))
         .catch(error => console.error('Error:', error));
