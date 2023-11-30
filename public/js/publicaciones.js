@@ -74,7 +74,7 @@ function limpiarFormulario() {
 
 //Mostrar publicaciones
 document.addEventListener("DOMContentLoaded", function () {
-    fetch('/obtener-publicaciones')
+    fetch('/Corluss/obtener-publicaciones')
         .then(response => response.json())
         .then(publicaciones => mostrarPublicaciones(publicaciones))
         .catch(error => console.error('Error:', error));
@@ -89,15 +89,15 @@ function mostrarPublicaciones(publicaciones) {
 
         const htmlPublicacion = `
 <div class="profile-container">
-    <img src="${publicacion.foto}" alt="Foto de perfil" class="profile-picture">
+    <img src="/Corluss${publicacion.foto}" alt="Foto de perfil" class="profile-picture">
     <span>${publicacion.nombre}</span>
     <span class="date">${new Date(publicacion.fecha_publicacion).toLocaleDateString()}</span>
 </div>
 <br><br>
 <p>${publicacion.contenido}</p>
 <br>
-${publicacion.imagen ? `<img src="${publicacion.imagen}" alt="Imagen publicación" style="display: block; max-width: 50%; height: auto; margin: auto; border-radius: 10px;">` : ''}
-${publicacion.video ? `<video src="${publicacion.video}" controls style="display: block; width: 50%; height: auto; margin: auto; border-radius: 10px;"></video>` : ''}
+${publicacion.imagen ? `<img src="/Corluss${publicacion.imagen}" alt="Imagen publicación" style="display: block; max-width: 50%; height: auto; margin: auto; border-radius: 10px;">` : ''}
+${publicacion.video ? `<video src="/Corluss${publicacion.video}" controls style="display: block; width: 50%; height: auto; margin: auto; border-radius: 10px;"></video>` : ''}
 <button type="button" class="comment-button">Comentar</button>
 `;
 
