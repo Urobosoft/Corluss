@@ -10,8 +10,6 @@ const io = require('socket.io')(server);
 require('./sockets')(io);
 
 
-
-
 // Seteamos el motor de plantillas
 app.set('view engine', 'ejs')
 
@@ -29,7 +27,7 @@ dotenv.config({path: './env/.env'})
 app.use(cookieParser())
 
 // Llamar al router principal
-app.use('/', require('./routes/router'))
+app.use('/Corluss', require('./routes/router'))
 
 // Aquí importas e integras tus rutas de amistad
 app.use('/api/amistad', require('./routes/amistadRoutes'))
