@@ -656,14 +656,14 @@ exports.login = async (req, res) => {
         };
 
         if (!nomUsuario || !password) {
-            res.render('login', {
+            res.render('./login', {
                 alert: true,
                 alertTitle: "Advertencia",
                 alertMessage: "Ingrese un usuario y password",
                 alertIcon: 'info',
                 showConfirmButton: true,
                 timer: false,
-                ruta: 'login',
+                ruta: './login',
                 valoresAnteriores,
                 errorC: null,
                 errorU: null,
@@ -834,11 +834,6 @@ exports.isAuthenticated = async (req, res, next) => {
         res.redirect('/login');
     }
 };
-
-
-
-
-
 
 
 exports.cambiarFoto = async (req, res) => {
