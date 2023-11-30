@@ -90,7 +90,6 @@ function mostrarPublicaciones(publicaciones) {
 
         const htmlPublicacion = `
 <div class="profile-container">
-    <img src="/Corluss${publicacion.foto}" alt="Foto de perfil" class="profile-picture">
     <span>${publicacion.nombre}</span>
     <span class="date">${new Date(publicacion.fecha_publicacion).toLocaleDateString()}</span>
 </div>
