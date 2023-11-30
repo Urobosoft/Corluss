@@ -876,7 +876,7 @@ exports.cambiarFoto = async (req, res) => {
 
 exports.logout = (req, res) => {
     res.clearCookie('jwt')
-    return res.redirect('/login')
+    return res.redirect('/Corluss/login')
 }
 
 
