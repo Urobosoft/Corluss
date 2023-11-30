@@ -38,7 +38,7 @@ document.getElementById('formulario-busqueda').addEventListener('submit', functi
     e.preventDefault();
     let busqueda = document.getElementById('campo-busqueda').value;
 
-    fetch('/api/chat/buscar', {
+    fetch('/Corluss/api/chat/buscar', {
         method: 'POST',
         body: JSON.stringify({ busqueda: busqueda }),
         headers: {
@@ -107,7 +107,7 @@ async function obtenerMensajesDelServidor(ID_destinatario) {
     usuarioId = document.getElementById('userId').textContent.trim();
 
     try {
-        let respuesta = await fetch('/api/chat/obtenerMensajes', {
+        let respuesta = await fetch('/Corluss/api/chat/obtenerMensajes', {
             method: 'POST',
             body: JSON.stringify({ ID_remitente: usuarioId, ID_destinatario: ID_destinatario }),
             headers: {

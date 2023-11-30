@@ -117,3 +117,5 @@ SELECT * FROM `corluss`.`SolicitudesAmistad`;
 SELECT * FROM `corluss`.`comentarios`; 	
 SELECT * FROM `corluss`.`publicaciones`; 	
 SELECT * FROM `corluss`.`usuario`; 		 	
+
+drop  table `corluss`.`publicaciones`;
