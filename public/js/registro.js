@@ -1,4 +1,5 @@
-const sign_in_btn = document.querySelector("#sign-in-btn");
+document.addEventListener('DOMContentLoaded', (event) => {
+  const sign_in_btn = document.querySelector("#sign-in-btn");
   const sign_up_btn = document.querySelector("#sign-up-btn");
   const container = document.querySelector(".container");
 
@@ -9,9 +10,12 @@ const sign_in_btn = document.querySelector("#sign-in-btn");
   sign_in_btn.addEventListener("click", () => {
     container.classList.remove("sign-up-mode");
   });
+});
 
   // Simular un clic en el botón "Regístrate" al cargar la página
-  sign_up_btn.click();
+
+
+
 
 // Contenido de fecha-nacimiento.js
 window.onload = function() {

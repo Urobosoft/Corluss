@@ -1,0 +1,157 @@
+/* Estilos Básicos */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos del Contenedor Principal */
+.containerform {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos de los Formularios */
+.containerform h2.title {
+    font-size: 1.8rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilos de las Columnas y Campos del Formulario */
+.form-columns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.form-column {
+    flex: 1;
+    min-width: 250px;
+    margin: 10px;
+}
+
+.input-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.input-field i {
+    margin-right: 10px;
+    color: #777;
+}
+
+.input-field input[type="text"],
+.input-field input[type="password"],
+.input-field select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Botones y Enlaces */
+.button, .btn-abrir-popup {
+    background-color: #5c6bc0;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.button:hover, .btn-abrir-popup:hover {
+    background-color: #3f51b5;
+}
+
+
+
+
+
+
+/* Estilos para Pop-up de Foto de Perfil */
+.overlay {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.overlay.active {
+	visibility: visible;
+}
+.popup {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.image-label-container {
+    text-align: center;
+}
+
+.image-label-container label {
+    display: block;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.image-label-container input[type="file"] {
+    display: none;
+}
+
+/* Estilos para Toggle de Formularios */
+.toggle-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.toggle-panel {
+    margin: 0 10px;
+    text-align: center;
+}
+
+.toggle-panel h1 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.toggle-panel p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+    .form-columns, .toggle-container {
+        flex-direction: column;
+    }
+
+    .form-column {
+        min-width: auto;
+        width: 100%;
+    }
+}

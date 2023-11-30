@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/dasboard.css">
+    <link rel="stylesheet" href="/css/perfil.css">
+    <title>Perfil</title>
+    <link rel="shortcut icon" href="/img/icono.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar Section -->
+        <%- include("partials/sidebar") %>
+            <main>
+              
+                <br><br>
+
+                <section class="perfil-usuario">
+                    <div class="contenedor-perfil">
+                        <div class="portada-perfil">
+                            <div class="sombra"></div>
+                            <div class="avatar-perfil">
+                                <img src="<%= alumno.foto %>" alt="img" />
+
+                                <div class="cambiar-foto">
+                                    <form action="/cambiarFoto" method="post" enctype="multipart/form-data">
+                                        <label for="foto">
+                                            <i class="fas fa-camera"></i>
+                                            <span>Cambiar foto</span>
+                                        </label>
+                                        <input type="file" id="foto" name="foto" accept="image/*" required style="display: none;" onchange="mostrarVistaPrevia(event)">
+                                        <button type="submit">Cambiar Foto</button>
+                                    </form>
+                                    <div id="vista-previa"></div> <!-- Contenedor para la vista previa de la imagen -->
+                                </div>
+
+                                <script></script>
+                                
+                            </div>
+
+
+
+                            <div class="datos-perfil">
+                                <h4 class="titulo-usuario">
+                                    <%= alumno.nomUsuario %>
+                                </h4>
+                                <p class="bio-usuario">Soy un padre preocipado por mi hijo.</p>
+                                <ul class="lista-perfil">
+                                    <li>0 Seguidores</li>
+                                    <li>0 Seguidos</li>
+                                    <li>0 Publicaciones</li>
+                                </ul>
+                            </div>
+                            <div class="opcciones-perfil">
+                                <button type="">Cambiar portada</button>
+                                <button type=""><i class="fas fa-wrench"></i></button>
+                            </div>
+                        </div>
+                        <div class="menu-perfil">
+                            <ul>
+                                <li><a href="#" title=""><i class="icono-perfil fas fa-bullhorn"></i> Publicaciones</a>
+                                </li>
+                                <li><a href="#" title=""><i class="icono-perfil fas fa-info-circle"></i> Informacion</a>
+                                </li>
+                                <li><a href="#" title=""><i class="icono-perfil fas fa-grin"></i> Amigos</a></li>
+                                <li><a href="#" title=""><i class="icono-perfil fas fa-camera"></i> Fotos</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+
+            </main>
+
+            <div class="right-section">
+                <div class="nav">
+
+
+                    <%- include("partials/bar") %>
+
+                </div>
+
+
+            </div>
+
+
+    </div>
+
+    <script src="/js/orders.js"></script>
+    <script src="/js/dasboard.js"></script>
+</body>

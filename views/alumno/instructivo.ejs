@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="/css/dasboard.css">
+    <title>Instructivo</title>
+    <link rel="shortcut icon" href="/img/icono.png" type="image/x-icon">
+</head>
+
+<body>
+<div class="container">
+    <!-- Sidebar Section -->
+    <%- include("partials/sidebar") %>
+    <main>
+
+
+
+   
+    </main>
+
+    <div class="right-section">
+        <div class="nav">
+            
+
+            <%- include("partials/bar") %>
+
+        </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // Verifica si es la primera visita del usuario
+        if (!localStorage.getItem('yaVisitado')) {
+            Swal.fire({
+                title: '¡Bienvenido!',
+                text: 'Estamos encantados de tenerte aquí.',
+                icon: 'success',
+                confirmButtonText: 'Genial'
+            });
+
+            // Marca que el usuario ya ha visitado el sitio
+            localStorage.setItem('yaVisitado', 'true');
+        }
+    </script>
+
+</div>
+
+<script src="/js/orders.js"></script>
+<script src="/js/dasboard.js"></script>
+</body>

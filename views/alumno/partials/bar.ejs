@@ -1,0 +1,25 @@
+<button id="menu-btn">
+    <span class="material-icons-sharp">
+        menu
+    </span>
+</button>
+<div class="dark-mode">
+    <span class="material-icons-sharp active">
+        light_mode
+    </span>
+    <span class="material-icons-sharp">
+        dark_mode
+    </span>
+</div>
+
+<div class="profile">
+    <% if (alumno) { %>
+    <div class="info">
+        <p>Hey, <b><%= alumno.nombre %></p>
+        <small class="text-muted"><%= alumno.rol %></small>
+    </div>
+    <div class="profile-photo">
+        <img src="<%= alumno.foto %>" alt="foto" />
+    </div>
+    <% } %>
+</div>

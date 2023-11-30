@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/img/icono.png" type=" image/x-icon">
+    <link rel="stylesheet" href="/css/dasboard.css">
+    <link rel="stylesheet" href="/css/altas.css">
+    <!-- <link rel="stylesheet" href="/css/alta.css"> -->
+
+    <title>Registro</title>
+    <link rel="shortcut icon" href="/img/icono.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar Section -->
+        <%- include("partials/sidebar") %>
+
+
+            <main>
+                <div class="containerC" id="container">
+                    <div class="form-container sign-up">
+                        <form action="/altaTutor" id="formRegistroT" class="sign-up-form" method="POST"
+                            enctype="multipart/form-data">
+                            <h2 class="title">Regístrate como Tutor</h2>
+                            <div class="form-columns">
+                                <div class="form-column">
+                                    <!-- Campos de entrada -->
+                                    <div class="input-field">
+                                        <input type="text" placeholder="Nombre" name="nombre" />
+                                    </div>
+
+                                    <% if (errorN) { %>
+                                        <div class="error-message">
+                                            <%= errorN %>
+                                        </div>
+                                        <% } %>
+
+                                            <div class="input-field">
+                                                <input type="text" placeholder="Apellido" name="apellido" />
+                                            </div>
+
+                                            <% if (errorA) { %>
+                                                <div class="error-message">
+                                                    <%= errorA %>
+                                                </div>
+                                                <% } %>
+
+
+                                                    <div class="input-field">
+                                                        <input type="text" placeholder="Nombre de usuario"
+                                                            name="nomUsuario" />
+                                                    </div>
+
+                                                    <% if (errorU) { %>
+                                                        <div class="error-message">
+                                                            <%= errorU %>
+                                                        </div>
+                                                        <% } %>
+
+                                                            <div class="input-field">
+                                                                <input type="text"
+                                                                    placeholder="Número de celular o correo electrónico"
+                                                                    name="contacto" />
+                                                            </div>
+                                                            <% if (errorC) { %>
+                                                                <div class="error-message">
+                                                                    <%= errorC %>
+                                                                </div>
+                                                                <% } %>
+
+                                                                    <% if (errorD) { %>
+                                                                        <div class="error-message">
+                                                                            <%= errorD %>
+                                                                        </div>
+                                                                        <% } %>
+
+
+                                                                            <div class="input-field">
+                                                                                <input type="password" id="password"
+                                                                                    placeholder="Contraseña"
+                                                                                    name="password" />
+                                                                            </div>
+                                </div>
+
+                                <div class="form-column">
+                                    <!-- Más campos de entrada -->
+                                    <div class="input-field">
+                                        <label for="genero">Género</label>
+                                    </div>
+
+                                    <select name="genero">
+                                        <option value="M">Masculino</option>
+                                        <option value="F">Femenino</option>
+                                        <option value="O">Otro</option>
+                                    </select>
+
+                                    <div class="input-field">
+                                        <label for="fecha-nacimiento">Fecha de Nacimiento</label>
+                                    </div>
+
+                                    <div class="form-columns">
+                                        <div class="form-column">
+                                            <label>Día:</label>
+                                            <br>
+                                            <select id="dia" name="dia"></select>
+                                        </div>
+
+                                        <div class="form-column">
+                                            <label>Mes:</label>
+                                            <br>
+                                            <select id="mes" name="mes"></select>
+                                        </div>
+
+                                        <div class="form-column">
+                                            <label>Año:</label>
+                                            <br>
+                                            <select id="año" name="ano"></select>
+                                        </div>
+                                    </div>
+
+                                    <input type="button" class="btn-abrir-popup boton" value="Foto de perfil"
+                                        data-img-target="imgTutor" />
+
+
+                                    <div class="overlay ">
+                                        <div class="popup">
+                                            <div class="image-label-container">
+                                                <p class="text">Foto de perfil</p>
+                                                <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i
+                                                        class="fas fa-times"></i></a>
+                                                <img class="imgF" src="/img/perfil.png" alt="avatar" id="imgTutor" />
+                                                <label for="foto2">SUBIR FOTO</label>
+                                                <input type="file" name="image" id="foto2" accept="image/*" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn solid">Registrarse</button>
+                        </form>
+
+
+
+                        <% if (autoclickRegister !==null) { %>
+                            <script>
+                                window.addEventListener('load', () => {
+                                    const registerBtn = document.getElementById('register');
+                                    if (registerBtn) {
+                                        registerBtn.click();
+                                    }
+                                });
+                            </script>
+                            <% } %>
+
+
+
+                    </div>
+
+                    <div class="form-container sign-in">
+                        <form action="/altaAlumno" id="formRegistroA" class="sign-up-form" method="POST"
+                            enctype="multipart/form-data">
+                            <h2 class="title">Regístrate como Alumno</h2>
+                            <div class="form-columns">
+                                <div class="form-column">
+                                    <!-- Campos de entrada -->
+                                    <div class="input-field">
+                                        <input type="text" placeholder="Nombre" name="nombre" />
+                                    </div>
+
+                                    <% if (errorN) { %>
+                                        <div class="error-message">
+                                            <%= errorN %>
+                                        </div>
+                                        <% } %>
+
+                                            <div class="input-field">
+                                                <input type="text" placeholder="Apellido" name="apellido" />
+                                            </div>
+
+                                            <% if (errorA) { %>
+                                                <div class="error-message">
+                                                    <%= errorA %>
+                                                </div>
+                                                <% } %>
+
+
+                                                    <div class="input-field">
+                                                        <input type="text" placeholder="Nombre de usuario"
+                                                            name="nomUsuario" />
+                                                    </div>
+
+                                                    <% if (errorU) { %>
+                                                        <div class="error-message">
+                                                            <%= errorU %>
+                                                        </div>
+                                                        <% } %>
+
+                                                            <div class="input-field">
+                                                                <input type="text"
+                                                                    placeholder="Número de celular o correo electrónico"
+                                                                    name="contacto" />
+                                                            </div>
+                                                            <% if (errorC) { %>
+                                                                <div class="error-message">
+                                                                    <%= errorC %>
+                                                                </div>
+                                                                <% } %>
+
+                                                                    <% if (errorD) { %>
+                                                                        <div class="error-message">
+                                                                            <%= errorD %>
+                                                                        </div>
+                                                                        <% } %>
+
+
+                                                                            <div class="input-field">
+                                                                                <input type="password" id="password"
+                                                                                    placeholder="Contraseña"
+                                                                                    name="password" />
+                                                                            </div>
+                                </div>
+
+                                <div class="form-column">
+                                    <!-- Más campos de entrada -->
+                                    <div class="input-field">
+                                        <label for="genero">Género</label>
+                                    </div>
+
+                                    <select name="genero">
+                                        <option value="M">Masculino</option>
+                                        <option value="F">Femenino</option>
+                                        <option value="O">Otro</option>
+                                    </select>
+
+                                    <div class="input-field">
+                                        <label for="fecha-nacimiento">Fecha de Nacimiento</label>
+                                    </div>
+
+                                    <div class="form-columns">
+                                        <div class="form-column">
+                                            <label>Día:</label>
+                                            <br>
+                                            <select id="dia" name="dia"></select>
+                                        </div>
+
+                                        <div class="form-column">
+                                            <label>Mes:</label>
+                                            <br>
+                                            <select id="mes" name="mes"></select>
+                                        </div>
+
+                                        <div class="form-column">
+                                            <label>Año:</label>
+                                            <br>
+                                            <select id="año" name="ano"></select>
+                                        </div>
+                                    </div>
+
+
+                                    <input type="button" class="btn-abrir-popup boton" value="Foto de perfil" />
+
+
+                                    <div class="overlay ">
+                                        <div class="popup">
+                                            <div class="image-label-container">
+                                                <p class="text">Foto de perfil</p>
+                                                <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i
+                                                        class="fas fa-times"></i></a>
+                                                <img class="imgF" src="/img/perfil.png" alt="avatar" id="imgAlumno" />
+                                                <label for="foto1">SUBIR FOTO</label>
+                                                <input type="file" name="image" id="foto1" accept="image/*" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn solid">Registrarse</button>
+                        </form>
+                    </div>
+
+                    <div class="toggle-container">
+                        <div class="toggleC">
+                            <div class="toggle-panel toggle-left">
+                                <h1>¡Registra a un alumno!</h1>
+                                <p>Accederá a todos los minijuegos y lecciones de aplicación</p>
+                                <button class="hidden" id="toggle-login">Registrar</button>
+                            </div>
+                            <div class="toggle-panel toggle-right">
+                                <h1>¡Registra a un tutor!</h1>
+                                <p>Monitorearía el progreso individual de cada alumno</p>
+                                <button class="hidden" id="toggle-register">Registrar</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    </div>
+                </div>
+            </main>
+
+
+            <div class="right-section">
+                <div class="nav">
+                    <%- include("partials/bar") %>
+                </div>
+                <!-- End of Nav -->
+            </div>
+
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if (typeof alert !=='undefined' && alert) { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle %>',
+                text: '<%= alertMessage %>',
+                icon: '<%= alertIcon %>',
+                showConfirmButton: <%= showConfirmButton %>,
+                timer: <%= timer %>
+        }).then(() => {
+                })
+        </script>
+        <% } %>
+
+            <script src="/js/alumnos.js"></script>
+            <script src="/js/alta.js"></script>
+            <script src="/js/orders.js"></script>
+            <script src="/js/dasboard.js"></script>
+</body>

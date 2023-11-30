@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="/css/dasboard.css">
+    <title>Principal</title>
+    <link rel="shortcut icon" href="/img/icono.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar Section -->
+        <%- include("partials/sidebar") %>
+            <main>
+                <form action="#">
+                    <div class="form-input">
+                        <input type="search" placeholder="Buscar..." required>
+                        <button type="submit" class="search-btn"><span class="material-icons-sharp">search</span>
+                        </button>
+                    </div>
+                </form>
+
+                <br><br>
+                <h1>¿Qué haremos hoy?</h1>
+                <br>
+
+                <div class="card novedades">
+                    <div class="header">
+                        <h2>Novedades</h2>
+                        <select name="mes" id="mes-select">
+                            <option value="este-mes">Este mes</option>
+                            <option value="este-mes">Mes pasado</option>
+                        </select>
+                    </div>
+                    <div class="analyse">
+                        <div class="sales">
+                            <div class="status">
+                                <div class="info">
+                                    <h3>Horas totales</h3>
+                                    <h1>0</h1>
+                                </div>
+                                <div class="progresss">
+                                    <svg>
+                                        <circle cx="38" cy="38" r="36"></circle>
+                                    </svg>
+                                    <div class="percentage">
+                                        <p>+81%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="visits">
+                            <div class="status">
+                                <div class="info">
+                                    <h3>Horas semanales</h3>
+                                    <h1>0</h1>
+                                </div>
+                                <div class="progresss">
+                                    <svg>
+                                        <circle cx="38" cy="38" r="36"></circle>
+                                    </svg>
+                                    <div class="percentage">
+                                        <p>-48%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="searches">
+                            <div class="status">
+                                <div class="info">
+                                    <h3>Horas diarias</h3>
+                                    <h1>0</h1>
+                                </div>
+                                <div class="progresss">
+                                    <svg>
+                                        <circle cx="38" cy="38" r="36"></circle>
+                                    </svg>
+                                    <div class="percentage">
+                                        <p>+21%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="new-users">
+                    <h2>Amigos</h2>
+                    <div class="user-list">
+                        <div class="user">
+                            <img src="/img/profile-2.jpg">
+                            <h2>Jack</h2>
+                            <p>54 Min Ago</p>
+                        </div>
+                        <div class="user">
+                            <img src="/img/profile-3.jpg">
+                            <h2>Amir</h2>
+                            <p>3 Hours Ago</p>
+                        </div>
+                        <div class="user">
+                            <img src="/img/profile-4.jpg">
+                            <h2>Ember</h2>
+                            <p>6 Hours Ago</p>
+                        </div>
+                        <div class="user">
+                            <img src="/img/plus.png">
+                            <h2>Más</h2>
+                            <p>Agregar</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-orders">
+
+                    <h2>Progreso</h2>
+                    <div class="bar-chart">
+                        <div class="bar" style="height: 60%;"></div>
+                        <div class="bar" style="height: 40%;"></div>
+                        <div class="bar" style="height: 80%;"></div>
+                        <div class="bar" style="height: 70%;"></div>
+                        <div class="bar" style="height: 50%;"></div>
+                        <div class="bar" style="height: 65%;"></div>
+                        <div class="bar" style="height: 75%;"></div>
+                        <div class="bar" style="height: 85%;"></div>
+                        <div class="bar" style="height: 55%;"></div>
+                        <div class="bar" style="height: 90%;"></div>
+                        <div class="bar" style="height: 60%;"></div>
+                        <div class="bar" style="height: 80%;"></div>
+                    </div>
+                    <div class="months">
+                        <span>ENE</span>
+                        <span>FEB</span>
+                        <span>MAR</span>
+                        <span>ABR</span>
+                        <span>MAY</span>
+                        <span>JUN</span>
+                        <span>JUL</span>
+                        <span>AGO</span>
+                        <span>SEP</span>
+                        <span>OCT</span>
+                        <span>NOV</span>
+                        <span>DIC</span>
+                    </div>
+
+
+                </div>
+
+            </main>
+
+
+            <div class="right-section">
+                <div class="nav">
+
+                    <%- include("partials/bar") %>
+
+                </div>
+                <!-- End of Nav -->
+
+                <div class="user-profile">
+
+                    <div class="card lecciones-pendientes">
+                        <h2>Lecciones pendientes</h2>
+                        <br>
+                        <div class="lecciones-item">
+                            <span class="material-icons-sharp">local_hospital</span>
+                            <div class="lecciones-info">
+                                <h3>Salud</h3>
+                                <p>Uso del celular</p>
+                            </div>
+                        </div>
+                        <div class="lecciones-item">
+                            <span class="material-icons-sharp">school</span>
+                            <div class="lecciones-info">
+                                <h3>Educación</h3>
+                                <p>Clases en línea</p>
+                            </div>
+                        </div>
+                        <div class="lecciones-item">
+                            <span class="material-icons-sharp">sports_esports</span>
+                            <div class="lecciones-info">
+                                <h3>Deportes</h3>
+                                <p>Juegos recomendados</p>
+                            </div>
+                        </div>
+                        <button class="more-lecciones">Más lecciones</button>
+                    </div>
+
+                </div>
+
+                <div class="reminders">
+                    <div class="header">
+                        <h2>Recordatorios</h2>
+                        <span class="material-icons-sharp">
+                            notifications_none
+                        </span>
+                    </div>
+
+                    <div class="notification">
+                        <div class="icon">
+                            <span class="material-icons-sharp">
+                                volume_up
+                            </span>
+                        </div>
+                        <div class="content">
+                            <div class="info">
+                                <h3>Clase</h3>
+                                <small class="text_muted">
+                                    08:00 AM - 12:00 PM
+                                </small>
+                            </div>
+                            <span class="material-icons-sharp">
+                                more_vert
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="notification deactive">
+                        <div class="icon">
+                            <span class="material-icons-sharp">
+                                edit
+                            </span>
+                        </div>
+                        <div class="content">
+                            <div class="info">
+                                <h3>Clase</h3>
+                                <small class="text_muted">
+                                    08:00 AM - 12:00 PM
+                                </small>
+                            </div>
+                            <span class="material-icons-sharp">
+                                more_vert
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="notification add-reminder">
+                        <div>
+                            <span class="material-icons-sharp">
+                                add
+                            </span>
+                            <h3>Agregar</h3>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="find-friends-container">
+                    <h3>Encontrar amigos</h3>
+                    <div class="icon-wrapper">
+                        <img src="/img/hombre.png" alt="Location" class="location-icon">
+                        <button class="view-more-btn">Ver más</button>
+                    </div>
+                   
+                </div>
+                
+            </div>
+
+
+    </div>
+
+    <script src="/js/orders.js"></script>
+    <script src="/js/dasboard.js"></script>
+</body>
