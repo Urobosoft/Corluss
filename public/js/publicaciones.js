@@ -26,7 +26,7 @@ document.getElementById("formPublicacion").addEventListener("submit", function (
 
     const formData = new FormData(this);
 
-    fetch('/publicar', {
+    fetch('/Corluss/publicar', {
         method: 'POST',
         body: formData,
         credentials: 'include'
@@ -74,7 +74,7 @@ function limpiarFormulario() {
 
 //Mostrar publicaciones
 document.addEventListener("DOMContentLoaded", function () {
-    fetch('/obtener-publicaciones')
+    fetch('/Corluss/obtener-publicaciones')
         .then(response => response.json())
         .then(publicaciones => mostrarPublicaciones(publicaciones))
         .catch(error => console.error('Error:', error));
