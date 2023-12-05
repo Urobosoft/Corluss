@@ -41,7 +41,7 @@ document.getElementById('formulario-busqueda').addEventListener('submit', functi
 function realizarBusqueda() {
     let busqueda = document.getElementById('campo-busqueda').value;
 
-    fetch('/api/chat/buscar', {
+    fetch('/Corluss/api/chat/buscar', {
         method: 'POST',
         body: JSON.stringify({ busqueda: busqueda }),
         headers: {
@@ -123,7 +123,7 @@ function abrirChat(usuario) {
 
 async function cargarConversacionesRecientes() {
     try {
-        const response = await fetch('/api/chat/conversacionesRecientes');
+        const response = await fetch('/Corluss/api/chat/conversacionesRecientes');
         const conversaciones = await response.json();
         mostrarConversacionesRecientes(conversaciones);
     } catch (error) {
@@ -165,7 +165,7 @@ function abrirChatPorID(ID_usuario) {
         console.error('No se proporcionó un ID de usuario válido.');
         return;
     }
-    fetch(`/api/chat/usuario/${ID_usuario}`)
+    fetch(`/Corluss/api/chat/usuario/${ID_usuario}`)
         .then(response => response.json())
         .then(usuario => {
             abrirChat(usuario); // Llamada a tu función existente
@@ -184,7 +184,7 @@ async function obtenerMensajesDelServidor(ID_destinatario) {
     usuarioId = document.getElementById('userId').textContent.trim();
 
     try {
-        let respuesta = await fetch('/api/chat/obtenerMensajes', {
+        let respuesta = await fetch('/Corluss/api/chat/obtenerMensajes', {
             method: 'POST',
             body: JSON.stringify({ ID_remitente: usuarioId, ID_destinatario: ID_destinatario }),
             headers: {
