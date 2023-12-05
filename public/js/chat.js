@@ -1,4 +1,4 @@
-//SE TRAEN LAS ID'S DE LOS USUARIOS 
+//SE TRAEN LAS ID'S DE LOS USUARIOS     
 let destinatarioId;
 let nombresUsuarios = {};
 let usuarioId = document.getElementById('userId').textContent.trim();
@@ -31,28 +31,35 @@ document.getElementById('boton-cerrar-sesion').addEventListener('click', (e) => 
 });
 
 
-
-
-
+//BUSQUEDA DE USUARIOS
 document.getElementById('formulario-busqueda').addEventListener('submit', function (e) {
     e.preventDefault();
+    realizarBusqueda();
+});
+
+// Realizar la búsqueda de usuarios y mostrar los resultados
+function realizarBusqueda() {
     let busqueda = document.getElementById('campo-busqueda').value;
 
-    fetch('/Corluss/api/chat/buscar', {
+    fetch('/api/chat/buscar', {
         method: 'POST',
         body: JSON.stringify({ busqueda: busqueda }),
         headers: {
             'Content-Type': 'application/json'
         }
     })
-        .then(response => response.json())
-        .then(data => {
-            mostrarResultados(data);
-        })
-        .catch(error => console.error('Error:', error));
-});
+    .then(response => response.json())
+    .then(data => {
+        mostrarResultados(data);
+        document.getElementById('resultados-busqueda').style.display = 'block';
+        document.getElementById('boton-cerrar').style.display = 'block';
+        document.getElementById('boton-busqueda').innerHTML = '<i class="ri-close-line"></i>'; // Cambia el ícono a 'X'
+    })
+    .catch(error => console.error('Error:', error));
+}
 
 
+//MUESTRO DE LA BUSQUEDA
 function mostrarResultados(resultados) {
     const contenedorResultados = document.getElementById('resultados-busqueda');
     contenedorResultados.innerHTML = '';
@@ -83,6 +90,14 @@ function mostrarResultados(resultados) {
     });
 }
 
+// Manejo del evento de clic para cerrar los resultados
+document.getElementById('boton-cerrar').addEventListener('click', function() {
+    document.getElementById('resultados-busqueda').style.display = 'none';
+    this.style.display = 'none';
+    document.getElementById('boton-busqueda').innerHTML = '<i class="ri-search-line"></i>'; // Revierte el ícono a la lupa
+});
+
+
 function abrirChat(usuario) {
     const userImage = document.querySelector('.conversation-user-image');
     const userName = document.querySelector('.conversation-user-name');
@@ -101,13 +116,75 @@ function abrirChat(usuario) {
 
      // Actualizar el caché de nombres de usuario
      nombresUsuarios[usuario.ID_usuario] = usuario.nomUsuario;
+    document.getElementById('boton-cerrar').click();
+     
 }
+
+
+async function cargarConversacionesRecientes() {
+    try {
+        const response = await fetch('/api/chat/conversacionesRecientes');
+        const conversaciones = await response.json();
+        mostrarConversacionesRecientes(conversaciones);
+    } catch (error) {
+        console.error('Error al cargar conversaciones:', error);
+    }
+}
+
+function mostrarConversacionesRecientes(conversaciones) {
+    const lista = document.querySelector('.content-messages-list');
+
+    conversaciones.forEach(conv => {
+        const elemento = document.createElement('li');
+        elemento.innerHTML = `
+            <a href="#" data-conversation="#conversation-${conv.ID_usuario}" data-id-usuario="${conv.ID_usuario}">
+                <img class="content-message-image" src="${conv.foto}" alt="${conv.nomUsuario}">
+                <span class="content-message-info">
+                    <span class="content-message-name">${conv.nomUsuario}</span>
+                    <span class="content-message-text">${conv.ultimoMensaje}</span>
+                </span>
+                <span class="content-message-more">
+                    <span class="content-message-time">${new Date(conv.timestamp).toLocaleTimeString()}</span>
+                </span>
+            </a>
+        `;
+        lista.appendChild(elemento);
+
+        elemento.querySelector('a').addEventListener('click', function (e) {
+            e.preventDefault();
+            const ID_usuario = this.getAttribute('data-id-usuario'); // Asegúrate de obtener correctamente el ID
+            console.log('ID_usuario a abrir en el chat:', ID_usuario);
+            abrirChatPorID(ID_usuario);
+        });
+    });
+}
+
+
+function abrirChatPorID(ID_usuario) {
+    if (!ID_usuario) {
+        console.error('No se proporcionó un ID de usuario válido.');
+        return;
+    }
+    fetch(`/api/chat/usuario/${ID_usuario}`)
+        .then(response => response.json())
+        .then(usuario => {
+            abrirChat(usuario); // Llamada a tu función existente
+        })
+        .catch(error => console.error('Error al obtener información del usuario:', error));
+}
+
+// Llamada a cargarConversacionesRecientes al cargar la página
+document.addEventListener('DOMContentLoaded', cargarConversacionesRecientes);
+
+
+
+
 
 async function obtenerMensajesDelServidor(ID_destinatario) {
     usuarioId = document.getElementById('userId').textContent.trim();
 
     try {
-        let respuesta = await fetch('/Corluss/api/chat/obtenerMensajes', {
+        let respuesta = await fetch('/api/chat/obtenerMensajes', {
             method: 'POST',
             body: JSON.stringify({ ID_remitente: usuarioId, ID_destinatario: ID_destinatario }),
             headers: {
@@ -121,17 +198,49 @@ async function obtenerMensajesDelServidor(ID_destinatario) {
     }
 }
 
+
 function mostrarMensajesEnInterfaz(mensajes) {
+    // Depuración: Asegurarse de que tenemos el usuarioId correcto
+    console.log('Usuario ID actual:', usuarioId);
+
     const contenedorMensajes = document.querySelector('.conversation-wrapper');
     contenedorMensajes.innerHTML = '';
 
     mensajes.forEach(mensaje => {
+        console.log('Procesando mensaje:', mensaje);
+        const esMensajeDeRemitente = Number(mensaje.ID_remitente) === Number(usuarioId);
+
+
+        // Depuración: Verificar si el mensaje es del remitente o no
+        console.log('Es mensaje del remitente:', esMensajeDeRemitente);
+
+        const claseMensaje = esMensajeDeRemitente ? 'emisor' : 'receptor';
+        const claseContenido = esMensajeDeRemitente ? 'contenido-enviado' : 'contenido-recibido';
+
+        // Depuración: Verificar las clases que se asignarán al mensaje
+        console.log('Clases asignadas:', claseMensaje, claseContenido);
+
+        // Crear el elemento de mensaje y asignar clases
         const mensajeElemento = document.createElement('li');
-        mensajeElemento.classList.add('mensaje');
-        mensajeElemento.textContent = mensaje.contenido; // Asegúrate de ajustar según la estructura de tus datos
+        mensajeElemento.classList.add('mensaje', claseMensaje);
+
+        // Configurar el contenido interno del mensaje
+        mensajeElemento.innerHTML = `
+            <div class="${claseContenido}">
+                <p class="texto-mensaje">${mensaje.contenido}</p>
+            </div>
+        `;
+
+        // Añadir el mensaje al contenedor
         contenedorMensajes.appendChild(mensajeElemento);
     });
+
+    // Depuración: Verificar el HTML resultante en el contenedor de mensajes
+    console.log('HTML del contenedor de mensajes:', contenedorMensajes.innerHTML);
 }
+
+
+
 
 //ENVIAR MENSAJE
 document.addEventListener('DOMContentLoaded', function () {
@@ -144,34 +253,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// function manejarEnvioMensaje(e) {
-//     e.preventDefault();
-
-//     usuarioId = document.getElementById('userId').textContent;
-//     usuarioId = usuarioId.trim();
-//     usuarioId = parseInt(usuarioId, 10);
-
-//     const ID_destinatario = document.getElementById('destinatarioId').value; 
-
-//     const mensajeInput = document.querySelector('.conversation-form-input');
-//     const mensaje = mensajeInput.value;
-
-//     if (mensaje) {
-//         socket.emit('enviar mensaje', {
-//             ID_remitente: usuarioId,
-//             ID_destinatario: ID_destinatario,
-//             contenido: mensaje
-//         });
-
-//         mensajeInput.value = '';
-//     }
-// }
-
-
 function manejarEnvioMensaje(e) {
     e.preventDefault();
 
-    // Obtener los detalles necesarios
     const mensajeInput = document.querySelector('.conversation-form-input');
     const mensaje = mensajeInput.value;
     const ID_destinatario = document.getElementById('destinatarioId').value;
@@ -185,31 +269,32 @@ function manejarEnvioMensaje(e) {
             nombreDestinatario: nombreDestinatario, // Reemplaza con el nombre real
             vistaPreviaMensaje: mensaje.substring(0, 30) // Vista previa del mensaje
         });
+        agregarMensajeAlContenedor({ ID_remitente: usuarioId, contenido: mensaje });
+        
         mensajeInput.value = '';
     }
 }
 
-function actualizarVistaPreviaChat(ID_destinatario, nombre, vistaPreviaMensaje) {
-    // Encuentra o crea un elemento en la lista de chats recientes
-    // Actualiza la vista previa del mensaje, el nombre del destinatario y la hora
-    // Ejemplo:
-    let chatExistente = document.querySelector(`#chat_${ID_destinatario}`);
-    if (!chatExistente) {
-        // Crear un nuevo elemento de lista si no existe
-        chatExistente = document.createElement('li');
-        chatExistente.id = `chat_${ID_destinatario}`;
-        // Agregar el elemento a la lista de chats recientes
-        document.querySelector('.content-messages-list').appendChild(chatExistente);
-    }
+function agregarMensajeAlContenedor(mensaje) {
+    const contenedorMensajes = document.querySelector('.conversation-wrapper');
+    const esMensajeDeRemitente = Number(mensaje.ID_remitente) === Number(usuarioId);
+    const claseMensaje = esMensajeDeRemitente ? 'emisor' : 'receptor';
+    const claseContenido = esMensajeDeRemitente ? 'contenido-enviado' : 'contenido-recibido';
 
-    // Actualizar el contenido del chatExistente
-    chatExistente.innerHTML = `
-        <a href="#" data-conversation="#conversation_${ID_destinatario}">
-            <span class="content-message-name">${nombre}</span>
-            <span class="content-message-text">${vistaPreviaMensaje}</span>
-            <span class="content-message-time">${new Date().toLocaleTimeString()}</span>
-        </a>
+    const mensajeElemento = document.createElement('li');
+    mensajeElemento.classList.add('mensaje', claseMensaje);
+
+    mensajeElemento.innerHTML = `
+        <div class="${claseContenido}">
+            <p class="texto-mensaje">${mensaje.contenido}</p>
+        </div>
     `;
+
+    contenedorMensajes.appendChild(mensajeElemento);
 }
 
-
+socket.on('mensaje recibido', (mensaje) => {
+    if (mensaje.ID_destinatario === usuarioId) {
+        agregarMensajeAlContenedor(mensaje);
+    }
+});

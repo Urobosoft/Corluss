@@ -15,6 +15,7 @@
     <script src="https://kit.fontawesome.com/61be3d49d9.js" crossorigin="anonymous"></script>
 </head>
 
+
 <body>
     <div class="container">
         <!-- Sidebar Section -->
@@ -37,7 +38,7 @@
                                 <li class="chat-sidebar-profile">
 
                                     <button type="button" class="chat-sidebar-profile-toggle">
-                                        <img src="/Corluss<%= user.foto %>" alt="foto" />
+                                        <img src="<%= user.foto %>" alt="foto" />
                                     </button>
 
                                     <ul class="chat-sidebar-profile-dropdown">
@@ -57,37 +58,44 @@
                                 <form id="formulario-busqueda" class="content-sidebar-form">
                                     <input type="search" id="campo-busqueda" class="content-sidebar-input"
                                         placeholder="Buscar...">
-                                    <button type="submit" class="content-sidebar-submit"><i
-                                            class="ri-search-line"></i></button>
+                                    <button type="submit" id="boton-busqueda" class="content-sidebar-submit">
+                                        <i class="ri-search-line"></i>
+                                    </button>
+                                    <!-- Botón para cerrar los resultados -->
+                                    <button type="button" id="boton-cerrar" class="content-sidebar-submit"
+                                        style="display: none;">
+                                        <i class="ri-close-line"></i>
+                                    </button>
                                 </form>
-                                <div id="resultados-busqueda"></div>
-
+                                <div id="resultados-busqueda" style="display: none;"> <!-- Inicialmente oculto -->
+                                </div>
 
 
                                 <div class="content-messages">
+
                                     <ul class="content-messages-list">
                                         <li class="content-message-title"><span>Reciente</span></li>
-                                    
+                                     
                                     </ul>
                                 </div>
-                                
+                
                             </div>
 
+                            <div class="recent-chats">
+                                <ul class="recent-chats-list">
+                                    <!-- Aquí se mostrarán los chats recientes -->
+                                </ul>
+                            </div>
+                            
 
-
-                            <!-- end: Content side -->
-                            <!-- start: Conversation -->
                             <div class="conversation conversation-default active">
                                 <i class="ri-chat-3-line"></i>
                                 <p>¡Seleciona un chat para ver la conversación!</p>
                             </div>
 
-
                             <b id="userId" style="display:none;">
                                 <%= user.ID_usuario %>
                             </b>
-
-                            
                             <div class="conversation" id="conversation-1">
                                 <div class="conversation-top">
                                     <button type="button" class="conversation-back"><i
@@ -113,22 +121,17 @@
                                 <div class="conversation-form">
                                     <form id="form-mensaje">
                                         <input type="hidden" id="destinatarioId">
-                                        <button type="button" class="conversation-form-button"><i
-                                                class="ri-emotion-line"></i></button>
                                         <div class="conversation-form-group">
                                             <textarea class="conversation-form-input" rows="1"
                                                 placeholder="Escribe aquí..."></textarea>
-                                            <button type="button" class="conversation-form-record"><i
-                                                    class="ri-mic-line"></i></button>
+                                            
+                                            <button type="submit"
+                                                class="conversation-form-button conversation-form-submit"><i
+                                                    class="ri-send-plane-2-line"></i></button>
                                         </div>
-                                        <button type="submit"
-                                         class="conversation-form-button conversation-form-submit"
-                                         ><i class="ri-send-plane-2-line"></i></button>
                                     </form>
                                 </div>
                             </div>
-
-
                             <!-- end: Conversation -->
                         </div>
                         <!-- end: Content -->
@@ -151,9 +154,8 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="socket.io/socket.io.js" charset="utf-8"></script>
-    <script src="/Corluss/js/server.js"></script>
-    <script src="/Corluss/js/chat.js"></script>
-    <script src="/Corluss/js/orders.js"></script>
-    <script src="/Corluss/js/dasboard.js"></script>
+    <script src="/socket.io/socket.io.js" charset="utf-8"></script>
+    <script src="/js/chat.js"></script>
+    <script src="/js/orders.js"></script>
+    <script src="/js/dasboard.js"></script>
 </body>
