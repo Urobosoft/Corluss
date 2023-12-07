@@ -9,25 +9,25 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 require('./sockets')(io);
 
-// Middleware para añadir prefijo a recursos estáticos
-const addPrefixToStaticResources = (req, res, next) => {
-  const originalSend = res.send;
+// // Middleware para añadir prefijo a recursos estáticos
+// const addPrefixToStaticResources = (req, res, next) => {
+//   const originalSend = res.send;
   
-  res.send = function (body) {
-    if (typeof body === 'string') {
-      // Reemplazar las rutas de recursos estáticos para incluir el prefijo /Corluss/
-      body = body.replace(/href="\//g, 'href="/Corluss/');
-      body = body.replace(/src="\//g, 'src="/Corluss/');
-      // Y así con cada tipo de recurso que necesites ajustar
-    }
-    originalSend.call(this, body);
-  };
+//   res.send = function (body) {
+//     if (typeof body === 'string') {
+//       // Reemplazar las rutas de recursos estáticos para incluir el prefijo /Corluss/
+//       body = body.replace(/href="\//g, 'href="/Corluss/');
+//       body = body.replace(/src="\//g, 'src="/Corluss/');
+//       // Y así con cada tipo de recurso que necesites ajustar
+//     }
+//     originalSend.call(this, body);
+//   };
   
-  next();
-};
+//   next();
+// };
 
-// Utiliza el middleware personalizado antes de tus rutas
-app.use(addPrefixToStaticResources);
+// // Utiliza el middleware personalizado antes de tus rutas
+// app.use(addPrefixToStaticResources);
 
 // Seteamos la carpeta public para archivos estáticos
 app.use('/Corluss', express.static('public'));
