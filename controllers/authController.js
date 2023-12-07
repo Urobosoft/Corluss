@@ -836,9 +836,15 @@ exports.isAuthenticated = async (req, res, next) => {
 };
 
 
+
+
+
+
+
 exports.cambiarFoto = async (req, res) => {
     try {
         if (!req.cookies.jwt) {
+            // Si no hay JWT en las cookies, redireccionar al login
             return res.redirect('/login');
         }
 
@@ -852,25 +858,25 @@ exports.cambiarFoto = async (req, res) => {
             conexion.query('UPDATE usuario SET foto = ? WHERE ID_usuario = ?', [nuevaFoto, usuarioId], (error, results) => {
                 if (error) {
                     console.error('Error al actualizar la foto en la base de datos:', error);
-                    return res.redirect('/Corluss/inicio');
+                    return res.redirect('/inicio');
                 }
 
                 console.log('Foto de perfil actualizada');
-                return res.redirect('/Corluss/perfil');
+                return res.redirect('/perfil');
             });
         } else {
             console.error('No se subió ninguna foto');
-            return res.redirect('/Corluss/perfil');
+            return res.redirect('/perfil');
         }
     } catch (error) {
         console.error('Error en el controlador cambiarFoto:', error);
-        return res.redirect('/Corluss/inicio');
+        return res.redirect('/inicio');
     }
 };
 
 exports.logout = (req, res) => {
     res.clearCookie('jwt')
-    return res.redirect('/Corluss/login')
+    return res.redirect('/login')
 }
 
 

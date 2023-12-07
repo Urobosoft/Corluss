@@ -9,4 +9,5 @@ router.post('/obtenerMensajes', authController.isAuthenticated, mensajes.obtener
 router.get('/conversacionesRecientes', authController.isAuthenticated, mensajes.obtenerConversacionesRecientes);
 router.get('/usuario/:id', authController.isAuthenticated, mensajes.obtenerInformacionUsuario);
 
+
 module.exports = router;

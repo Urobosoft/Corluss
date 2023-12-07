@@ -2,10 +2,11 @@ const io = require('./index.js');
 const messageController = require('./messageController'); 
 
 module.exports = (io) => {
-    
-    let usersOnline = {}; 
+
+    let usersOnline = {}; // Mantener un registro de usuarios online
 
     io.on('connection', socket => {
+        // Evento para manejar un nuevo usuario
         socket.on('nuevo usuario', async (usuario, callback) => {
             if (usersOnline[usuario.id]) {
                 callback(false);
@@ -16,6 +17,7 @@ module.exports = (io) => {
                 await messageController.actualizarEstadoConexion(usuario.id, 'En linea');
             }
         });
+
       
         socket.on('enviar mensaje', async (datos) => {
             try {
@@ -46,6 +48,7 @@ module.exports = (io) => {
             }
         });
 
+        // Manejo de la desconexión del socket
         socket.on('disconnect', async () => {
             if (socket.userId && usersOnline[socket.userId]) {
                 await messageController.actualizarEstadoConexion(socket.userId, 'Desconectado');

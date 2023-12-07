@@ -304,7 +304,7 @@ router.get('/obtener-publicaciones', publicacionesController.obtenerPublicacione
 
 
 
-// Administradores por defecto
+// // Administradores por defecto
 // const adminData = {
 //     nombre: 'Kevin Saúl',
 //     apellido: 'Olarte Tomás',

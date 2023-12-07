@@ -575,10 +575,10 @@
 }
 
 .conversation-form {
+    width: 100%;
     padding: 8px 16px;
+    
     background-color: var(--white);
-    display: flex;
-    align-items: flex-end;
 }
 .conversation-form-group {
     width: 100%;
@@ -595,7 +595,7 @@
     font: inherit;
     font-size: 14px;
     resize: none;
-    width: 100%;
+    width: 200px;
     display: block;
     line-height: 1.5;
     max-height: calc(20px + ((14px * 2) * 6));
@@ -619,7 +619,7 @@
 }
 .conversation-form-button {
     width: 40px;
-    height: 40px;
+    height: 40px;   
     display: flex;
     align-items: center;
     justify-content: center;
@@ -668,7 +668,20 @@
 }
 /* end: Conversation */
 
-
+#resultados-busqueda {
+    position: absolute; /* Posición absoluta para que sea flotante */
+    top: 100px;
+    width: 90%; /* O el ancho que prefieras */
+    z-index: 1000; /* Asegúrate de que esté sobre otros elementos */
+    background-color: white;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2);
+    overflow-y: auto; /* Permite desplazamiento si el contenido es muy largo */
+    max-height: 300px; /* Limita la altura y permite desplazamiento */
+    border: 1px solid #ccc; /* Opcional: añade un borde si es necesario */
+}
+.input-busqueda {
+    width: 100%;
+}   
 
 /* start: Breakpoints */
 @media screen and (max-width: 1600px) {
@@ -754,3 +767,80 @@
     }
 }
 /* end: Breakpoints */
+
+
+ /* Si es necesario, puedes ajustar también los estilos para el botón de emoji para evitar que se sobrepongan */
+ .conversation-form-button {
+    margin-right: 30px;
+    /* Añade margen a la derecha del botón de emoji */
+}
+
+.conversation-form-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.conversation-form-input {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.conversation-form-button,
+.conversation-form-record,
+.conversation-form-submit {
+    flex-shrink: 0;
+}
+
+.conversation-wrapper {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Estilos base para todos los mensajes */
+.mensaje {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+/* Estilos para el contenedor del mensaje que incluye el avatar y el texto */
+.contenido-enviado, .contenido-recibido {
+    display: flex;
+    align-items: flex-end; /* Alinea los elementos hijos al final del eje transversal */
+    width: 100%; /* Opcional: para asegurar que tome todo el ancho disponible */
+}
+
+/* Estilos para los mensajes enviados */
+.emisor {
+    justify-content: flex-end;
+}
+
+.emisor .contenido-enviado {
+    flex-direction: row-reverse;
+}
+
+/* Estilos para los mensajes recibidos */
+.receptor {
+    justify-content: flex-start;
+}
+
+.receptor .contenido-recibido {
+    flex-direction: row;
+}
+
+.receptor .texto-mensaje {
+    background-color: #87CEEB; /* Color de fondo verde claro para los mensajes del receptor */
+    color: #333;
+    border-radius: 20px 20px 20px 0;
+}
+
+
+.texto-mensaje {
+    padding: 10px;
+    border-radius: 20px;
+    margin: 0 10px;
+}
+
+
+

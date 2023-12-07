@@ -10,11 +10,13 @@ const io = require('socket.io')(server);
 require('./sockets')(io);
 
 
+
+
 // Seteamos el motor de plantillas
 app.set('view engine', 'ejs')
 
 // Seteamos la carpeta public para archivos estáticos
-app.use(express.static('public'))
+app.use('/Corluss', express.static('public'));
 
 // Para procesar datos enviados desde forms
 app.use(express.urlencoded({extended:true}))
@@ -45,7 +47,7 @@ app.use(function(req, res, next) {
     next();
 });
 
-server.listen(7523, () => {
-  console.log('SERVER UP running in http://localhost:7523');
+server.listen(7777, () => {
+  console.log('SERVER UP running in http://localhost:7777');
   module.exports = io;
 });

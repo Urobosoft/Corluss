@@ -4,7 +4,7 @@ let usuarioId;
 
 //MOSTRAR TODOS LOS TUTORES 
 window.onload = function () {
-    fetch('/Corluss/api/amistad/tutores')
+    fetch('/api/amistad/tutores')
         .then(response => response.json())
         .then(data => {
             const listaTutores = document.getElementById('listaTutores');
@@ -20,7 +20,7 @@ window.onload = function () {
 document.getElementById('botonBuscar').addEventListener('click', function () {
     usuarioId = document.getElementById('userId').textContent; // Asegúrate de que este elemento exista y tenga el ID del usuario actual
     const terminoBusqueda = document.getElementById('busquedaTutor').value;
-    fetch(`/Corluss/api/amistad/buscar/tutores?q=${encodeURIComponent(terminoBusqueda)}`)
+    fetch(`/api/amistad/buscar/tutores?q=${encodeURIComponent(terminoBusqueda)}`)
         .then(response => response.json())
         .then(data => {
             const listaResultados = document.getElementById('resultadosBusqueda');
@@ -56,7 +56,7 @@ document.getElementById('botonBuscar').addEventListener('click', function () {
 function enviarSolicitud(receptorId, boton) {
     const estadoSolicitud = document.getElementById(`estado-solicitud-${receptorId}`);
 
-    fetch('/Corluss/api/amistad/enviar', {
+    fetch('/api/amistad/enviar', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function mostrarSolicitudesPendientes(usuarioId) {
     console.log("HOLA")
-    fetch(`/Corluss/api/amistad/solicitudes/${usuarioId.trim()}`)
+    fetch(`/api/amistad/solicitudes/${usuarioId.trim()}`)
     .then(response => {
         if (!response.ok) {
             throw new Error(`Error HTTP: ${response.status}`);
@@ -147,7 +147,7 @@ function mostrarSolicitudesPendientes(usuarioId) {
 
 //ACEPTAR SOLICITUDES
 function aceptarSolicitud(solicitudId, usuarioId) {
-    fetch('/Corluss/api/amistad/aceptar', {
+    fetch('/api/amistad/aceptar', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

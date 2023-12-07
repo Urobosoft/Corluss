@@ -20,14 +20,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-//Registrar y mostrar  
- 
+//Registrar y mostrar   
 document.getElementById("formPublicacion").addEventListener("submit", function (event) {
     event.preventDefault();
 
     const formData = new FormData(this);
 
-    fetch('/Corluss/publicar', {
+    fetch('/publicar', {
         method: 'POST',
         body: formData,
         credentials: 'include'
@@ -57,8 +56,8 @@ function agregarPublicacionAlDOM(publicacion) {
 <br>
     <p>${publicacion.contenido}</p>
     <br>
-    ${publicacion.imagen ? `<img src="/Corluss${publicacion.imagen}" alt="Imagen publicación" style="display: block; max-width: 50%; height: auto; margin: auto; border-radius: 10px;">` : ''}
-    ${publicacion.video ? `<video src="/Corluss${publicacion.video}" controls style="display: block; width: 50%; height: auto; margin: auto; border-radius: 10px;"></video>` : ''}
+    ${publicacion.imagen ? `<img src="${publicacion.imagen}" alt="Imagen publicación" style="display: block; max-width: 50%; height: auto; margin: auto; border-radius: 10px;">` : ''}
+    ${publicacion.video ? `<video src="${publicacion.video}" controls style="display: block; width: 50%; height: auto; margin: auto; border-radius: 10px;"></video>` : ''}
     <button type="button" class="comment-button" onclick="abrirComentariosPopup(${publicacion.ID_publicacion})">Comentar</button>
 
 
@@ -74,7 +73,7 @@ function limpiarFormulario() {
 
 //Mostrar publicaciones
 document.addEventListener("DOMContentLoaded", function () {
-    fetch('/Corluss/obtener-publicaciones')
+    fetch('/obtener-publicaciones')
         .then(response => response.json())
         .then(publicaciones => mostrarPublicaciones(publicaciones))
         .catch(error => console.error('Error:', error));
@@ -95,8 +94,8 @@ function mostrarPublicaciones(publicaciones) {
 <br><br>
 <p>${publicacion.contenido}</p>
 <br>
-${publicacion.imagen ? `<img src="/Corluss${publicacion.imagen}" alt="Imagen publicación" style="display: block; max-width: 50%; height: auto; margin: auto; border-radius: 10px;">` : ''}
-${publicacion.video ? `<video src="/Corluss${publicacion.video}" controls style="display: block; width: 50%; height: auto; margin: auto; border-radius: 10px;"></video>` : ''}
+${publicacion.imagen ? `<img src="${publicacion.imagen}" alt="Imagen publicación" style="display: block; max-width: 50%; height: auto; margin: auto; border-radius: 10px;">` : ''}
+${publicacion.video ? `<video src="${publicacion.video}" controls style="display: block; width: 50%; height: auto; margin: auto; border-radius: 10px;"></video>` : ''}
 <button type="button" class="comment-button">Comentar</button>
 `;
 
