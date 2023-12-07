@@ -1,6 +1,7 @@
 //SE TRAEN LAS ID'S DE LOS USUARIOS 
 let destinatarioId;
 let nombresUsuarios = {};
+let usuarioActual = {};
 let usuarioId = document.getElementById('userId').textContent.trim();
 
 //SE INICIA EL SOCKET
@@ -108,6 +109,7 @@ function abrirChat(usuario) {
     userStatus.textContent = usuario.estado_conexion; // Actualizar con el estado real del usuario
 
     obtenerMensajesDelServidor(usuario.ID_usuario);
+  
 
     // Muestra la conversación y oculta la vista por defecto
     document.querySelector('.conversation-default').classList.remove('active');
@@ -117,8 +119,39 @@ function abrirChat(usuario) {
      // Actualizar el caché de nombres de usuario
      nombresUsuarios[usuario.ID_usuario] = usuario.nomUsuario;
     document.getElementById('boton-cerrar').click();
+    
+    const userStatusIndicator = document.getElementById('user-status-indicator');
+    if (usuario.estado_conexion === 'En linea') {
+        userStatusIndicator.classList.remove('offline'); // Asegúrate de que el indicador sea visible
+        userStatus.textContent = 'En línea';
+    } else {
+        userStatusIndicator.classList.add('offline'); // Oculta el indicador
+        userStatus.textContent = 'Desconectado';
+    }
+    
+
+    usuarioActual = {
+        id: usuario.ID_usuario,
+        nombre: usuario.nomUsuario,
+        foto: usuario.foto
+    };
      
 }
+
+
+
+function actualizarEstadoUsuario(estaEnLinea) {
+    const estadoIndicador = document.querySelector('.status-indicator');
+    
+    if(estaEnLinea) {
+        estadoIndicador.classList.remove('offline');
+        estadoIndicador.style.backgroundColor = 'green'; // O el color que elijas
+    } else {
+        estadoIndicador.classList.add('offline');
+        estadoIndicador.style.backgroundColor = 'gray'; // O el color para el estado "offline"
+    }
+}
+
 
 
 async function cargarConversacionesRecientes() {
@@ -239,8 +272,6 @@ function mostrarMensajesEnInterfaz(mensajes) {
 }
 
 
-
-
 //ENVIAR MENSAJE
 document.addEventListener('DOMContentLoaded', function () {
     const formMensaje = document.getElementById('form-mensaje');
@@ -252,6 +283,26 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    const textareaMensaje = document.querySelector('.conversation-form-input');
+    const formMensaje = document.getElementById('form-mensaje');
+
+    if (formMensaje) {
+        formMensaje.addEventListener('submit', manejarEnvioMensaje);
+
+        // Detector de eventos para la tecla Enter en el campo de texto
+        textareaMensaje.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault(); // Prevenir salto de línea en caso de presionar Enter
+                formMensaje.dispatchEvent(new Event('submit')); // Disparar el evento de envío
+            }
+        });
+    } else {
+        console.error('El formulario de mensaje no se encontró en el DOM');
+    }
+});
+
+
 function manejarEnvioMensaje(e) {
     e.preventDefault();
 
@@ -259,6 +310,7 @@ function manejarEnvioMensaje(e) {
     const mensaje = mensajeInput.value;
     const ID_destinatario = document.getElementById('destinatarioId').value;
     const nombreDestinatario = nombresUsuarios[ID_destinatario];
+    document.querySelector('.conversation-form-input').value = '';
 
     if (mensaje) {
         socket.emit('enviar mensaje', {
@@ -272,6 +324,14 @@ function manejarEnvioMensaje(e) {
         
         mensajeInput.value = '';
     }
+    actualizarVistaPreviaConversacion(ID_destinatario, {
+        contenido: mensaje,
+        timestamp: Date.now(),
+        foto: usuarioActual.foto, // Usar la foto almacenada
+        nomUsuario: usuarioActual.nombre
+    });
+
+    mensajeInput.value = '';
 }
 
 function agregarMensajeAlContenedor(mensaje) {
@@ -297,3 +357,37 @@ socket.on('mensaje recibido', (mensaje) => {
         agregarMensajeAlContenedor(mensaje);
     }
 });
+
+
+function actualizarVistaPreviaConversacion(ID_usuario, ultimoMensaje) {
+    const lista = document.querySelector('.content-messages-list');
+    const conversacionExistente = document.querySelector(`a[data-id-usuario="${ID_usuario}"]`);
+
+    if (conversacionExistente) {
+        // Actualizar la vista previa del mensaje y la hora
+        conversacionExistente.querySelector('.content-message-text').textContent = ultimoMensaje.contenido;
+        conversacionExistente.querySelector('.content-message-time').textContent = new Date(ultimoMensaje.timestamp).toLocaleTimeString();
+    } else {
+        // Crear una nueva entrada en la lista si la conversación no existe
+        const elemento = document.createElement('li');
+        elemento.innerHTML = `
+            <a href="#" data-conversation="#conversation-${ID_usuario}" data-id-usuario="${ID_usuario}">
+                <img class="content-message-image" src="${ultimoMensaje.foto}" alt="${ultimoMensaje.nomUsuario}">
+                <span class="content-message-info">
+                    <span class="content-message-name">${ultimoMensaje.nomUsuario}</span>
+                    <span class="content-message-text">${ultimoMensaje.contenido}</span>
+                </span>
+                <span class="content-message-more">
+                    <span class="content-message-time">${new Date(ultimoMensaje.timestamp).toLocaleTimeString()}</span>
+                </span>
+            </a>
+        `;
+        lista.appendChild(elemento);
+
+        // Agregar evento de clic para abrir la conversación
+        elemento.querySelector('a').addEventListener('click', function (e) {
+            e.preventDefault();
+            abrirChatPorID(ID_usuario);
+        });
+    }
+}

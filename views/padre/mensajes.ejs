@@ -73,10 +73,10 @@
 
                                     <ul class="content-messages-list">
                                         <li class="content-message-title"><span>Reciente</span></li>
-                                     
+
                                     </ul>
                                 </div>
-                
+
                             </div>
 
                             <div class="recent-chats">
@@ -84,7 +84,7 @@
                                     <!-- Aquí se mostrarán los chats recientes -->
                                 </ul>
                             </div>
-                            
+
 
                             <div class="conversation conversation-default active">
                                 <i class="ri-chat-3-line"></i>
@@ -98,17 +98,21 @@
                                 <div class="conversation-top">
                                     <button type="button" class="conversation-back"><i
                                             class="ri-arrow-left-line"></i></button>
-                                    <div class="conversation-user">
-                                        <img class="conversation-user-image" src="" alt="img">
-                                        <div>
-                                            <div class="conversation-user-name">Name</div>
-                                            <div class="conversation-user-status online">Estas</div>
-                                        </div>
-                                    </div>
+                                            <div class="conversation-user">
+                                                <div class="user-image-container">
+                                                    <img class="conversation-user-image" src="" alt="img">
+                                                    <span class="status-indicator" id="user-status-indicator"></span> <!-- Indicador de estado en línea -->
+                                                </div>
+                                                <div>
+                                                    <div class="conversation-user-name"></div>
+                                                    <div class="conversation-user-status online"></div>
+                                                </div>
+                                            </div>
+                                            
                                     <div class="conversation-buttons">
-                                        <button type="button"><i class="ri-phone-fill"></i></button>
+                                        <!-- <button type="button"><i class="ri-phone-fill"></i></button>
                                         <button type="button"><i class="ri-vidicon-line"></i></button>
-                                        <button type="button"><i class="ri-information-line"></i></button>
+                                        <button type="button"><i class="ri-information-line"></i></button> -->
                                     </div>
                                 </div>
                                 <div class="conversation-main">
@@ -122,7 +126,7 @@
                                         <div class="conversation-form-group">
                                             <textarea class="conversation-form-input" rows="1"
                                                 placeholder="Escribe aquí..."></textarea>
-                                            
+
                                             <button type="submit"
                                                 class="conversation-form-button conversation-form-submit"><i
                                                     class="ri-send-plane-2-line"></i></button>

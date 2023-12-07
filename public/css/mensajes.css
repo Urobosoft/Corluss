@@ -843,4 +843,30 @@
 }
 
 
-
+.user-image-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .status-indicator {
+    position: absolute;
+    bottom: 5px;
+    right: 0;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: green; /* o cualquier color que indique "en línea" */
+    border: 2px solid white; /* asumiendo que el fondo es blanco para que destaque */
+  }
+  
+  /* Agregar margen alrededor de la imagen para que el indicador no quede sobre el borde de la imagen */
+  .conversation-user-image {
+    margin-bottom: 4px; /* ajusta este valor según sea necesario */
+    margin-right: 4px; /* ajusta este valor según sea necesario */
+  }
+  
+  .status-indicator.offline {
+    display: none; /* Ocultar el indicador cuando el usuario está desconectado */
+  }
+  

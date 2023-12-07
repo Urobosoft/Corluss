@@ -1,3 +1,28 @@
+document.addEventListener('DOMContentLoaded', function() {
+    var botonAyuda = document.getElementById('botonAyuda');
+    var chatVentana = document.getElementById('chatVentana');
+    var cerrarChat = document.getElementById('cerrarChat');
+
+    botonAyuda.onclick = function() {
+        if (chatVentana.style.display === 'block') {
+            chatVentana.style.display = 'none';
+        } else {
+            chatVentana.style.display = 'block';
+        }
+    };
+
+    botonAyuda.ondblclick = function() {
+        chatVentana.style.display = 'none';
+    };
+
+    cerrarChat.onclick = function() {
+        chatVentana.style.display = 'none';
+    };
+});
+
+
+
+
 const sideMenu = document.querySelector('aside');
 const menuBtn = document.getElementById('menu-btn');
 const closeBtn = document.getElementById('close-btn');
@@ -31,3 +56,4 @@ Orders.forEach(order => {
     tr.innerHTML = trContent;
     document.querySelector('table tbody').appendChild(tr);
 });
+

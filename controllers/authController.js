@@ -22,8 +22,6 @@ function encrypt(data) {
     return iv.toString('hex') + ':' + encrypted.toString('hex');
 }
 
-//Funcion de decifrado
-
 function decrypt(encryptedData) {
     try {
         const key = Buffer.from(process.env.ENCRYPTION_KEY, 'hex');
@@ -50,6 +48,7 @@ function decrypt(encryptedData) {
 }
 
 module.exports.decrypt = decrypt;
+module.exports.encrypt = encrypt;
 
 //Funcion para la autenticacion
 function pareceCifrado(dato) {

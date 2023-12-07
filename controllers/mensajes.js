@@ -22,10 +22,9 @@ async function obtenerMensajes(req, res) {
 
 async function getMensajesFromDB(ID_remitente, ID_destinatario) {
     return new Promise((resolve, reject) => {
-        // Asegúrate de que los alias de las tablas sean únicos para remitente y destinatario.
         const query = `
-            SELECT mensajes.*, 
-                   usuario_remitente.foto AS foto_remitente, 
+            SELECT mensajes.*,
+                   usuario_remitente.foto AS foto_remitente,
                    usuario_destinatario.foto AS foto_destinatario
             FROM mensajes
             INNER JOIN usuario AS usuario_remitente ON mensajes.ID_remitente = usuario_remitente.ID_usuario
@@ -39,19 +38,20 @@ async function getMensajesFromDB(ID_remitente, ID_destinatario) {
                 console.error(`Error en la consulta de la base de datos: ${err.message}`);
                 reject(err);
             } else {
-                resolve(results.map(mensaje => {
+                // Asumimos que 'contenido' es el campo que contiene el mensaje cifrado
+                const mensajesDescifrados = results.map(mensaje => {
                     return {
                         ...mensaje,
-                        foto_remitente: decrypt(mensaje.foto_remitente),
-                        foto_destinatario: decrypt(mensaje.foto_destinatario)
-
+                        contenido: decrypt(mensaje.contenido), 
+                        foto_remitente: mensaje.foto_remitente,
+                        foto_destinatario: mensaje.foto_destinatario
                     };
-                }));
+                });
+                resolve(mensajesDescifrados);
             }
         });
     });
 }
-
 
 async function obtenerConversacionesRecientes(req, res) {
     try {
@@ -91,6 +91,7 @@ async function obtenerConversacionesRecientes(req, res) {
                 const conversaciones = results.map(conversacion => {
                     return {
                         ...conversacion,
+                        ultimoMensaje: conversacion.ultimoMensaje ? decrypt(conversacion.ultimoMensaje) : null,
                         foto: decrypt(conversacion.foto) 
                     };
                 });
