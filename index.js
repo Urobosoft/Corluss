@@ -50,7 +50,7 @@ dotenv.config({path: './env/.env'})
 app.use(cookieParser())
 
 // Llamar al router principal con el prefijo
-app.use('/Corluss/', require('./routes/router'));
+app.use('/Corluss', require('./routes/router'));
 
 // Aquí importas e integras tus rutas de amistad con el prefijo
 app.use('/Corluss/api/amistad', require('./routes/amistadRoutes'));
