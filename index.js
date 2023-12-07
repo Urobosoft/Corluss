@@ -53,13 +53,13 @@ app.use(cookieParser())
 app.use('/', require('./routes/router'))
 
 // Aquí importas e integras tus rutas de amistad
-app.use('/Corluss/api/amistad', require('./routes/amistadRoutes'))
+app.use('/api/amistad', require('./routes/amistadRoutes'))
 
 // Aquí importas e integras tus rutas de amistad
-app.use('/Corluss/api/chat', require('./routes/mensajesRoutes'))
+app.use('/api/chat', require('./routes/mensajesRoutes'))
 
 // Aquí importas e integras tus rutas de amistad
-app.use('/Corluss/api/user', require('./routes/usersRoutes'))
+app.use('/api/user', require('./routes/usersRoutes'))
 
 // Para eliminar la cache 
 app.use(function(req, res, next) {
