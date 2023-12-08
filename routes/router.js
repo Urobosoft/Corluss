@@ -28,6 +28,11 @@ router.get('/invitado', (req, res) => {
     res.render('invitado/invitado');
 });
 
+router.get('/empresa', (req, res) => {
+    res.render('empresa.html');
+});
+
+
 
 // Ruta para registro
 router.get('/login', (req, res) => {
