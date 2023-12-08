@@ -10,8 +10,14 @@ const upload = authController.upload;
 // Ruta para la página index
 
 router.get('/', (req, res) => {
+    res.render('empresa');
+});
+
+
+router.get('/index', (req, res) => {
     res.render('index');
 });
+
 
 
 // router.get('/', (req, res) => {
@@ -28,9 +34,6 @@ router.get('/invitado', (req, res) => {
     res.render('invitado/invitado');
 });
 
-router.get('/empresa', (req, res) => {
-    res.render('empresa');
-});
 
 
 
