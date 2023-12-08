@@ -29,7 +29,7 @@ router.get('/invitado', (req, res) => {
 });
 
 router.get('/empresa', (req, res) => {
-    res.render('empresa.html');
+    res.render('empresa');
 });
 
 
